@@ -1,0 +1,149 @@
+\documentclass[12pt,a4paper,english]{article}
+\usepackage{tikz-cd}
+\usepackage[a4paper]{geometry}
+\usepackage{ctex}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,T1]{fontenc}
+\usepackage{babel}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{color}
+\usepackage{array}
+\usepackage{graphicx}
+
+\geometry{top=3cm,bottom=3cm,left=2.5cm,right=2.5cm}
+\setlength\parindent{0pt}
+\renewcommand{\baselinestretch}{1.3}
+
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+  
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[section]
+\newtheorem*{ex}{Example}
+\newtheorem*{rem}{Remark}
+
+\theoremstyle{plain}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{coro}{Corollary}
+
+\title{A result on the completions\\ of a Galois number field extension}
+\author{Milan Berger-Guesneau, Deng Zhiyuan}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We describe here the Galois group of the local extensions associated to an extension of number fields.
+\end{abstract}
+\vspace{0.5cm}
+
+Let $L/K$ be a finite Galois extension of number fields, let $v$ (resp. $w$) be a finite place of $K$ (resp. a finite place of $L$ that divides\footnote{We say that $w$ divides $v$ if a valuation that represent $v$ can be extended to a valuation that represent $w$.} $v$).
+
+Recall that we have a natural bijection between the set of prime ideals of $\mathcal{O}_K$ and the set of finite places of $K$: each place $v$ of $K$ is represented by the usual $\mathfrak{p}$-adic valuation $v_\mathfrak{p}$ for a unique prime ideal $\mathfrak{p}$. It turns out that we have $[v_\mathfrak{q}]=w\mid v=[v_\mathfrak{p}]$ if and only if $\mathfrak{q}\mid \mathfrak{p}$: see \cite[p.15]{clserre}. Thus we can define $e_w:=e_\mathfrak{q}$ and $f_w:=f_\mathfrak{q}$. In other words, the ramification and inertia indexes make sense for finite places.
+\vspace{0.5cm}
+
+There is a natural action of $\text{\normalfont{Gal}}(L/K)$ on the set $\{w\,,\, w\mid v\}$: if $\mathfrak{q}$ is the prime ideal of $\mathcal{O}_L$ that represents $w$, this action is given by $\sigma\cdot [v_\mathfrak{q}]=[v_{\sigma (\mathfrak{q})}]$. An important result is that this action is transitive \cite[p.167]{neukirch}. This implies that we have $e_w=e_{w'}$ for all $w,w'\mid v$ \cite[p.55]{neukirch}. To put it another way, the ramification index only depends on $v$: we will thus denote it $e_v$. We define $f_v$ the exact same way.
+\vspace{0.5cm}
+
+We denote by $K_v$ (resp. $L_w$) the completion\footnote{It means that we complete $K$ for the absolute value induced by any valuation that represents $v$ (all those valuations induce the same completion).} of $K$ with respect to $v$ (resp. of $L$ with respect to $w$). Then $L_w/K_v$ is a finite Galois extension of local fields\footnote{The extension $L/K$ is Galois so $LK_v/K_v$ is also Galois. It turns out that $L K_v \cong L_w$ (see \cite[p.31]{clserre}).}.
+\vspace{0.5cm}
+
+The aim of this document is to show the following result.
+\vspace{0.5cm}
+
+\begin{thm}
+The Galois group of $L_w/K_v$ is canonically isomorphic to the decomposition group\footnote{Remark that $D_w$ is simply the stabilizer of $w$ for the action recalled above.}
+\begin{equation*}
+    D_w:=\{\sigma\in\text{\normalfont Gal}(L/K)\,,\, \sigma(w)=w\}
+\end{equation*}
+\end{thm}
+\vspace{1cm}
+
+An automorphism $\sigma$ of $L$ induces a field homomorphism $\widetilde{\sigma}:L_w\longrightarrow L_{\sigma(w)}$, defined by
+\begin{equation}\label{defsigma^}
+	\widetilde{\sigma}(\lim_n x_n):=\lim_n \sigma(x_n)
+\end{equation}
+We used the fact that for every element $x$ of $L_w$, there exists a sequence $(x_n)$ in $L$ that converges to $x$ (by density of $L$ in $L_w$). If in particular $\sigma\in D_w$, then $\widetilde{\sigma}$ goes from $L_w$ to $L_w$. It's not obvious at first that the sequence $(\sigma(x_n))$ converges in $L_w$ in equation \eqref{defsigma^}, but it's actually the case by the first point of the following lemma.
+
+\begin{lem}
+Let $\sigma\in D_w$.
+\begin{itemize}
+\item[1)] $\sigma:L\to L$ is continuous for the topology induced by $w$. Therefore $\widetilde{\sigma}:L_w\to L_w$ is continuous.
+
+\item[2)] $\widetilde{\sigma}$ is bijective and $K_v$-linear.
+\end{itemize}
+\end{lem}
+\begin{proof}\textcolor{white}{Coucou !}
+
+\textit{1)} Because $\sigma\in D_w$, there exists $C>0$ such that $v_\mathfrak{q}=Cv_{\sigma(\mathfrak{q})}$. The valuations $v_\mathfrak{q}$ and $v_{\sigma(\mathfrak{q})}$ take all integral values and only those ones, so $C=1$. We have for all $x\in L$
+\begin{equation*}
+\prod_\mathfrak{q}\mathfrak{q}^{v_\mathfrak{q}(\sigma^{-1}(x))}=(\sigma^{-1}(x))=\sigma^{-1}((x))=\prod_\mathfrak{q}\sigma^{-1}(\mathfrak{q})^{v_\mathfrak{q}(x)}=\prod_\mathfrak{q}\mathfrak{q}^{v_{\sigma(\mathfrak{q})}(x)}
+\end{equation*}
+and so by uniqueness of the decomposition in prime ideals we get
+\begin{equation*}
+v_\mathfrak{q}(\sigma^{-1}(x))=v_{\sigma(\mathfrak{q})}(x)=v_{\mathfrak{q}}(x)
+\end{equation*}
+It implies $v_\mathfrak{q}(\sigma(x))=v_{\mathfrak{q}}(x)$ and thus\footnote{We proved that if $\sigma\in D_w$, then it's an isometry!}
+\begin{equation*}
+|\sigma(x)|_w=|x|_w
+\end{equation*}
+In particular, $\sigma$ is continuous.
+
+\textit{2)} $\widetilde{\sigma}$ is injective because it's a field homomorphism. It's surjective because if $y\in L_w$ is approached by $(y_n)=(\sigma(x_n))$, then $(x_n)=(\sigma^{-1}(\sigma(x_n)))$ converges by \textit{1)} and $y=\widetilde{\sigma}(\lim_n x_n)$.
+
+Let $\lambda=\lim\lambda_n\in K_v$ and $x=\lim x_n\in L_w$. We have
+\begin{equation*}
+    \widetilde{\sigma}(\lambda x)=\widetilde{\sigma}(\lim_n\lambda_n x_n)=\lim_n \sigma(\lambda_n x_n)=\lim_n \lambda_n\sigma( x_n)=\lambda\widetilde{\sigma}(x)
+\end{equation*}
+and so $\widetilde{\sigma}$ is $K_v$-linear.
+\end{proof}
+
+The point \textit{2)} of the lemma shows that the canonical homomorphism 
+\begin{align*}
+D_w &\longrightarrow \text{\normalfont Gal}(L_w/K_v)\\
+&\sigma\longmapsto\widetilde{\sigma}
+\end{align*}
+is well defined. It is injective, because two continuous functions that coincide on a dense subset of a topological space are equal. So in order to complete the proof of the theorem, we only have to prove the following proposition.
+\vspace{0.5cm}
+
+\begin{prop}
+The group $D_w$ has order $[L_w:K_v]=\#\text{\normalfont Gal}(L_w/K_v)$.
+\end{prop}
+
+\begin{proof}[Proof of the proposition]
+For every $ \sigma\in \text{Gal}(L/K)$, we have $D_{\sigma w}=\sigma D_{w}\sigma^{-1}$, so we get $\# D_{\sigma w}=\# D_{w}$. So the number of Galois orbits times the cardinal of the orbits in equal to the cardinal of the Galois group:
+\begin{equation}\label{star}
+   g_v\times \#D_{w}=[L:K]
+\end{equation}
+where $g_v:=\#\{w\,,\,w\mid v\}$.
+Because the extension $L/K$ is Galois, the usual formula
+\begin{equation*}
+   [L:K]=\sum_{w\mid v}e_w f_w
+\end{equation*}
+becomes
+\begin{equation*}
+   [L:K]=e_v f_v g_v
+\end{equation*}
+Thus \eqref{star} translates as $g_v\times \#D_{w}=e_v f_v g_v$ i.e. $\#D_{w}=e_v f_v=[L_w:K_v]$.
+\end{proof}
+\vspace{0.5cm}
+
+\begin{rem}
+The last equality in the proof is a little bit subtle: we used the fact that the $e_v$ and $f_v$ (defined from the global extension $L/K$) are the same as the $e_v=[w(L_w):v(K_v)]$ and $f_v=[\mathcal{O}_{L_w}/\mathfrak{m}_w: \mathcal{O}_{K_v}/\mathfrak{m}_v]$ (defined from the local extension $L_w/K_v$). See \cite[p.31]{clserre}.
+\end{rem}
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+\end{document}
